@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/q_ffffff"
+    android:orientation="vertical">
+    <!--android:background="@drawable/xpt_area_choose"-->
+    <TextView
+        android:id="@+id/easyListFilter_ItemDisplayName"
+        android:layout_width="wrap_content"
+        android:layout_height="48dp"
+        android:layout_centerVertical="true"
+        android:layout_weight="1"
+        android:focusable="false"
+        android:gravity="center_vertical"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:singleLine="true"
+        android:text="ddddddd"
+        android:textColor="@drawable/menutitle_textcolor_selector"
+        android:textSize="14sp" />
+
+    <cc.easyandroid.listfiltermenu.simple.CustomGridView
+        android:id="@+id/gridview"
+        android:layout_width="match_parent"
+        android:scrollbars="none"
+        android:choiceMode="singleChoice"
+        android:numColumns="3"
+        android:layout_height="match_parent" />
+
+</LinearLayout>

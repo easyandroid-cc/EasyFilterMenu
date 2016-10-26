@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item name="easyListFilter_MenuTitleDisplayName" type="id" />
+    <item name="easyListFilter_MenuParent" type="id" />
+
+    <item name="easyListFilter_MenuContent_List_1" type="id" />
+    <item name="easyListFilter_MenuContent_List_2" type="id" />
+    <item name="easyListFilter_MenuContent_List_3" type="id" />
+
+    <!--装list的父容器-->
+    <item name="easyListFilter_MenuContent_List_1Box" type="id" />
+    <item name="easyListFilter_MenuContent_List_2Box" type="id" />
+    <item name="easyListFilter_MenuContent_List_3Box" type="id" />
+
+    <!--<item name="easyListFilter_MenuContent_ChildLayout" type="id" />-->
+
+    <!--其他view 中有确定按钮的时候的，按钮的id-->
+    <!--<item name="easyList1CustomViewConfirm" type="id" />-->
+
+    <item name="easyListFilter_CustomViewConfirm_View1" type="id" />
+    <item name="easyListFilter_CustomViewConfirm_View2" type="id" />
+    <item name="easyListFilter_CustomViewConfirm_View3" type="id" />
+    <item name="more_clear" type="id" />
+
+</resources>

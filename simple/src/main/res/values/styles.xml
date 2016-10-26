@@ -1,0 +1,33 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppBaseTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!-- Customize your theme here. -->
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <!--<item name="EasyFilterMenuStyle">@style/QfamgEasyListFilterMenuStyle</item>-->
+        <!--<item name="EasyFilterMenuStyle">@style/QfamgEasyListFilterMenuStyle</item>-->
+
+        <item name="android:dropDownListViewStyle">@style/widget_dropdownlistview</item>
+    </style>
+
+    <style name="widget_dropdownlistview" parent="android:style/Widget.Holo.ListView.DropDown">
+        <item name="android:scrollbars">none</item>
+        <item name="android:background">@android:color/transparent</item>
+        <item name="elevation">0dp</item>
+        <!--<item name="translationZ">0dp</item>-->
+        <!--<item name="android:divider">@drawable/dropdown_divider</item>-->
+    </style>
+
+    <style name="AppTheme" parent="AppBaseTheme">
+        <!-- All customizations that are NOT specific to a particular API-level can go here. -->
+    </style>
+
+    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
+</resources>

@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:baselineAligned="false"
+    android:dividerPadding="10dp"
+    android:orientation="vertical">
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/easyListFilter_MenuContent_List_1"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@android:color/transparent"
+        android:cacheColorHint="#00000000"
+        android:choiceMode="singleChoice"
+        android:drawSelectorOnTop="true"
+        android:fadingEdge="none"
+        android:listSelector="#00000000"
+        android:paddingBottom="50dp"
+        android:scrollbars="none" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        android:layout_alignBottom="@id/easyListFilter_MenuContent_List_1"
+        android:gravity="bottom">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_alignParentBottom="true"
+            android:background="#F5F5F9"
+            android:clickable="true"
+            android:focusable="true"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingLeft="10dp">
+
+
+
+            <Button
+                android:id="@id/easyListFilter_CustomViewConfirm_View1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right|center_vertical"
+                android:layout_marginRight="10dp"
+                android:text="清除"
+                android:textColor="@android:color/black" />
+            <Button
+                android:id="@id/easyListFilter_CustomViewConfirm_View2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right|center_vertical"
+                android:layout_marginRight="10dp"
+                android:text="確定"
+                android:textColor="@android:color/black" />
+
+        </LinearLayout>
+    </RelativeLayout>
+
+    <!--<LinearLayout-->
+    <!--android:id="@id/easyListFilter_MenuContent_List_1Box"-->
+    <!--android:layout_width="0dp"-->
+    <!--android:layout_height="match_parent"-->
+    <!--android:layout_weight="2"-->
+    <!--android:orientation="horizontal">-->
+    <!--&lt;!&ndash;android:layout_marginBottom="150dp"&ndash;&gt;-->
+    <!--<ListView-->
+    <!--android:id="@id/easyListFilter_MenuContent_List_2"-->
+    <!--android:layout_width="0dp"-->
+    <!--android:layout_height="match_parent"-->
+    <!--android:layout_weight="1"-->
+    <!--android:background="@android:color/transparent"-->
+    <!--android:cacheColorHint="#00000000"-->
+    <!--android:choiceMode="singleChoice"-->
+    <!--android:divider="@null"-->
+    <!--android:fadingEdge="none"-->
+    <!--android:listSelector="#00000000"-->
+    <!--android:scrollbars="none" />-->
+    <!--&lt;!&ndash;android:layout_marginBottom="150dp"&ndash;&gt;-->
+    <!--<ListView-->
+    <!--android:id="@id/easyListFilter_MenuContent_List_3"-->
+    <!--android:layout_width="0dp"-->
+    <!--android:layout_height="match_parent"-->
+    <!--android:layout_weight="1"-->
+    <!--android:background="@android:color/transparent"-->
+    <!--android:cacheColorHint="#00000000"-->
+    <!--android:choiceMode="singleChoice"-->
+    <!--android:divider="@null"-->
+    <!--android:fadingEdge="none"-->
+    <!--android:listSelector="#00000000"-->
+    <!--android:scrollbars="none" />-->
+    <!--</LinearLayout>-->
+
+</RelativeLayout>
+<!--<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"-->
+    <!--android:id="@+id/pop_filter_ll"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="match_parent"-->
+    <!--android:baselineAligned="false"-->
+    <!--android:orientation="horizontal">-->
+
+
+    <!--<cc.easyandroid.easyrecyclerview.EasyRecyclerView-->
+        <!--android:id="@id/easyListFilter_MenuContent_List_1"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="300dp"-->
+        <!--android:layout_weight="1"-->
+        <!--android:background="@android:color/white"-->
+        <!--android:cacheColorHint="#00000000"-->
+        <!--android:divider="@null"-->
+        <!--android:listSelector="#00000000"-->
+       <!--/>-->
+
+    <!--<RelativeLayout-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="match_parent"-->
+        <!--android:gravity="bottom"-->
+        <!--android:layout_alignBottom="@id/easyListFilter_MenuContent_List_1">-->
+
+        <!--<Button-->
+            <!--android:id="@id/easyListFilter_CustomViewConfirm_List1"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="50dp"-->
+            <!--android:layout_gravity="bottom"-->
+            <!--android:text="确定" />-->
+
+        <!--<EditText-->
+            <!--android:id="@+id/editText"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="50dp"-->
+
+            <!--android:gravity="bottom" />-->
+    <!--</RelativeLayout>-->
+
+
+<!--</RelativeLayout>-->

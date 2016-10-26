@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    android:orientation="vertical">
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="?attr/colorPrimary" />
+
+
+        <include layout="@layout/content_main" />
+
+    <Button
+        android:id="@+id/click"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="传值到下一界面点我"
+        android:textColor="@color/black_overlay" />
+
+    <Button
+        android:id="@+id/click2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="不传值点我"
+        android:textColor="@color/black_overlay" />
+
+    <Button
+        android:id="@+id/click3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="clean data"
+        android:textColor="@color/black_overlay" />
+</LinearLayout>

@@ -1,0 +1,26 @@
+<resources>
+    <!--引用系统样式 -->
+    <declare-styleable name="EasyFilterMenus">
+        <attr name="EasyFilterMenuStyle" format="reference" />
+    </declare-styleable>
+
+    <declare-styleable name="EasyFilterMenu">
+        <!--title-->
+        <attr name="menuTitle" format="reference|string" />
+        <!--menuContent ResourceId-->
+        <attr name="menuContentLayout" format="reference" />
+        <!--menuTitle ResourceId-->
+        <attr name="menuTitleLayout" format="reference" />
+        <!--偏移量-->
+        <attr name="menuPupupXoff" format="reference|dimension" />
+        <attr name="menuPupupYoff" format="reference|dimension" />
+    </declare-styleable>
+
+    <declare-styleable name="EasyFilterMenuSingle">
+
+    </declare-styleable>
+    <!--但列表的多项选择&lt;!&ndash;&ndash;&gt;-->
+    <declare-styleable name="EasyFilterMenuMulti">
+
+    </declare-styleable>
+</resources>

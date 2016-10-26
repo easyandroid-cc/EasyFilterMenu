@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<cc.easyandroid.listfiltermenu.widget.EasyMenuContainer xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/easyMenuContainer"
+    android:layout_width="match_parent"
+    android:layout_height="48dp"
+    android:background="#000000"
+    android:orientation="horizontal"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:showIn="@layout/activity_main">
+
+    <cc.easyandroid.listfiltermenu.widget.EasyFilterMenuSingle
+        android:id="@+id/menuFilter1"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:background="@color/q_ffffff"
+        android:clickable="true"
+        app:menuContentLayout="@layout/menu_content_single_layout"
+        app:menuTitle="区域" />
+
+    <cc.easyandroid.listfiltermenu.widget.EasyFilterMenuSingle
+        android:id="@+id/menuFilter2"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:background="@color/q_ffffff"
+        android:clickable="true"
+        app:menuContentLayout="@layout/zdy_single_layout"
+        app:menuTitle="售价" />
+
+    <cc.easyandroid.listfiltermenu.widget.EasyFilterMenuMulti
+        android:id="@+id/menuFilter3"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:background="@color/q_ffffff"
+        android:clickable="true"
+        app:menuContentLayout="@layout/menu_content_multi_layout"
+        app:menuTitle="间隔" />
+
+    <cc.easyandroid.listfiltermenu.widget.EasyFileterMenuCustom
+        android:id="@+id/menuFilter4"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:background="@color/q_ffffff"
+        android:clickable="true"
+        app:menuContentLayout="@layout/zdy_single_layout_2"
+        app:menuTitle="更多" />
+
+    <!--<cc.easyandroid.listfiltermenu.widget.EasyFileterMenuMore-->
+    <!--android:id="@+id/menuFilter4"-->
+    <!--android:layout_width="0dp"-->
+    <!--android:layout_height="match_parent"-->
+    <!--android:layout_weight="1"-->
+    <!--android:background="@color/q_ffffff"-->
+    <!--android:clickable="true"-->
+    <!--app:menuContentLayout="@layout/menu_content_more_layout"-->
+    <!--app:menuTitle="更多"-->
+    <!--app:showUnlimiteds="list2|list1"-->
+    <!--app:unlimitedText="不限" />-->
+
+</cc.easyandroid.listfiltermenu.widget.EasyMenuContainer>

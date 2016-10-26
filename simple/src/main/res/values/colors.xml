@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#FF4081</color>
+
+    <color name="black_overlay">#66000000</color>
+    <color name="q_ffffff">#ffffff</color>
+    <color name="q_ff0000">#ff0000</color>
+    <color name="q_333333">#333333</color>
+    <color name="q_999999">#999999</color>
+    <color name="QFF0000">#FF0000</color>
+    <!--<color name="colorAccent">#FF0000</color>-->
+</resources>
