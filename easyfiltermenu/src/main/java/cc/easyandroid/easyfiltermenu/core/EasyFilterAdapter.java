@@ -8,7 +8,7 @@ import java.util.List;
 
 import cc.easyandroid.easyrecyclerview.EasyFlexibleAdapter;
 
-public class ListFilterAdapter extends EasyFlexibleAdapter<IEasyItem> {
+public class EasyFilterAdapter extends EasyFlexibleAdapter<IEasyItem> {
     private EasyItemManager easyItemManager;
 
     public void setEasyItemManager(EasyItemManager easyItemManager) {
@@ -17,7 +17,7 @@ public class ListFilterAdapter extends EasyFlexibleAdapter<IEasyItem> {
         setItems(list);
     }
 
-    public ListFilterAdapter(LayoutInflater inflater) {
+    public EasyFilterAdapter(LayoutInflater inflater) {
         super(inflater);
     }
 
@@ -41,7 +41,7 @@ public class ListFilterAdapter extends EasyFlexibleAdapter<IEasyItem> {
         for (int i = 0; i < count; i++) {
             IEasyItem easyItem = (IEasyItem) getItem(i);
             EasyItemManager easyItemManager = easyItem.getEasyItemManager();
-            easyItemManager.setChildSelectPosion(easyItemManager.getDefaultSelectPosition());
+            easyItemManager.setChildSelectPosition(easyItemManager.getDefaultSelectPosition());
             easyItemManager.setChildSelectTempPosition(easyItemManager.getDefaultSelectPosition());
             easyItemManager.setChildSelected(false);
         }
@@ -56,7 +56,7 @@ public class ListFilterAdapter extends EasyFlexibleAdapter<IEasyItem> {
         for (int i = 0; i < count; ++i) {
             IEasyItem easyItem = (IEasyItem) this.getItem(i);
             EasyItemManager easyItemManager = easyItem.getEasyItemManager();
-            easyItemManager.setChildSelectTempPosition(easyItemManager.getChildSelectPosion());
+            easyItemManager.setChildSelectTempPosition(easyItemManager.getChildSelectPosition());
         }
     }
 
@@ -68,7 +68,7 @@ public class ListFilterAdapter extends EasyFlexibleAdapter<IEasyItem> {
         for (int i = 0; i < count; ++i) {
             IEasyItem easyItem = (IEasyItem) this.getItem(i);
             EasyItemManager easyItemManager = easyItem.getEasyItemManager();
-            easyItemManager.setChildSelectPosion(easyItemManager.getChildSelectTempPosition());
+            easyItemManager.setChildSelectPosition(easyItemManager.getChildSelectTempPosition());
         }
     }
 
@@ -88,7 +88,7 @@ public class ListFilterAdapter extends EasyFlexibleAdapter<IEasyItem> {
         int count = getItemCount();
         for (int i = 0; i < count; i++) {
             IEasyItem easyItem = (IEasyItem) getItem(i);
-            easyItem.getEasyItemManager().setChildSelectPosion(0);
+            easyItem.getEasyItemManager().setChildSelectPosition(0);
             easyItem.getEasyItemManager().setChildSelected(false);
         }
         return tags;

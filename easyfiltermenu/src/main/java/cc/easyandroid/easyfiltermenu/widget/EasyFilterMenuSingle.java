@@ -11,6 +11,7 @@ import android.view.ViewGroup;
 
 import java.util.List;
 
+import cc.easyandroid.easyfiltermenu.core.EasyFilterAdapter;
 import cc.easyandroid.easyrecyclerview.EasyFlexibleAdapter;
 import cc.easyandroid.easyrecyclerview.SelectableAdapter;
 import cc.easyandroid.easyfiltermenu.R;
@@ -18,7 +19,6 @@ import cc.easyandroid.easyfiltermenu.core.EasyItemManager;
 import cc.easyandroid.easyfiltermenu.core.EasyMenuStates;
 import cc.easyandroid.easyfiltermenu.core.EasyUtils;
 import cc.easyandroid.easyfiltermenu.core.IEasyItem;
-import cc.easyandroid.easyfiltermenu.core.ListFilterAdapter;
 
 /**
  * 最多3个列表的单选
@@ -51,7 +51,7 @@ public class EasyFilterMenuSingle extends EasyFilterMenu {
     protected void onMenuContentViewCreated(ViewGroup menuContentView, EasyFilterMenu easyFilterMenu) {
         //listview--1
         mRecyclerView1 = (RecyclerView) menuContentView.findViewById(R.id.easyListFilter_MenuContent_List_1);
-        final ListFilterAdapter list1Adapter = new ListFilterAdapter(LayoutInflater.from(menuContentView.getContext()));
+        final EasyFilterAdapter list1Adapter = new EasyFilterAdapter(LayoutInflater.from(menuContentView.getContext()));
         list1Adapter.setMode(SelectableAdapter.MODE_SINGLE);
         mRecyclerView1.setAdapter(list1Adapter);
         setupListView(mRecyclerView1);
@@ -81,7 +81,7 @@ public class EasyFilterMenuSingle extends EasyFilterMenu {
         mRecyclerView2 = (RecyclerView) menuContentView.findViewById(R.id.easyListFilter_MenuContent_List_2);
         if (mRecyclerView2 != null) {
             list2Box = menuContentView.findViewById(R.id.easyListFilter_MenuContent_List_2Box);
-            ListFilterAdapter list2Adapter = new ListFilterAdapter(LayoutInflater.from(getContext()));
+            EasyFilterAdapter list2Adapter = new EasyFilterAdapter(LayoutInflater.from(getContext()));
             list2Adapter.setMode(SelectableAdapter.MODE_SINGLE);
             mRecyclerView2.setAdapter(list2Adapter);
             setupListView(mRecyclerView2);
@@ -110,7 +110,7 @@ public class EasyFilterMenuSingle extends EasyFilterMenu {
             mRecyclerView3 = (RecyclerView) menuContentView.findViewById(R.id.easyListFilter_MenuContent_List_3);
             if (mRecyclerView3 != null) {
                 list3Box = menuContentView.findViewById(R.id.easyListFilter_MenuContent_List_3Box);
-                ListFilterAdapter list3Adapter = new ListFilterAdapter(LayoutInflater.from(getContext()));
+                EasyFilterAdapter list3Adapter = new EasyFilterAdapter(LayoutInflater.from(getContext()));
                 list3Adapter.setMode(SelectableAdapter.MODE_SINGLE);
                 mRecyclerView3.setAdapter(list3Adapter);
                 setupListView(mRecyclerView3);
@@ -135,14 +135,13 @@ public class EasyFilterMenuSingle extends EasyFilterMenu {
 
     //Save state
     public void saveStates() {//点击确认健手动触发
-        ListFilterAdapter listFilterAdapter = (ListFilterAdapter) mRecyclerView1.getAdapter();
-        listFilterAdapter.saveSelectTempPosition();
-
+        EasyFilterAdapter easyFilterAdapter = (EasyFilterAdapter) mRecyclerView1.getAdapter();
+        easyFilterAdapter.saveSelectTempPosition();
     }
 
     @Override
     protected boolean isEmpty() {
-        ListFilterAdapter adapter = (ListFilterAdapter) mRecyclerView1.getAdapter();
+        EasyFilterAdapter adapter = (EasyFilterAdapter) mRecyclerView1.getAdapter();
         return adapter.isEmpty();
     }
 
@@ -153,17 +152,16 @@ public class EasyFilterMenuSingle extends EasyFilterMenu {
     @Override
     protected void onShowMenuContent() {
         super.onShowMenuContent();
-        ListFilterAdapter listFilterAdapter = (ListFilterAdapter) mRecyclerView1.getAdapter();
-        setMenuList1State(listFilterAdapter.getEasyItemManager().getChildSelectPosion(), false);//pop显示的时候去检查看是要现实哪一个
-
+        EasyFilterAdapter easyFilterAdapter = (EasyFilterAdapter) mRecyclerView1.getAdapter();
+        setMenuList1State(easyFilterAdapter.getEasyItemManager().getChildSelectPosition(), false);//pop显示的时候去检查看是要现实哪一个
     }
 
     @Override
     protected void onDismissMenuContent() {
         super.onDismissMenuContent();
-        ListFilterAdapter listFilterAdapter = (ListFilterAdapter) mRecyclerView1.getAdapter();
-        listFilterAdapter.resetAllChildSelectTempPosition();
-        listFilterAdapter.notifyDataSetChanged();
+        EasyFilterAdapter easyFilterAdapter = (EasyFilterAdapter) mRecyclerView1.getAdapter();
+        easyFilterAdapter.resetAllChildSelectTempPosition();
+        easyFilterAdapter.notifyDataSetChanged();
     }
 
     /**
@@ -172,20 +170,20 @@ public class EasyFilterMenuSingle extends EasyFilterMenu {
      * @param position 位置
      */
     public void setMenuList1State(final int position, final boolean fromUserClick) {
-        final ListFilterAdapter listFilterAdapter = (ListFilterAdapter) mRecyclerView1.getAdapter();
+        final EasyFilterAdapter easyFilterAdapter = (EasyFilterAdapter) mRecyclerView1.getAdapter();
         if (position < 0) {
-            listFilterAdapter.clearChoices();
+            easyFilterAdapter.clearChoices();
             return;
         }
-//        final ListFilterAdapter listFilterAdapter = (ListFilterAdapter) mRecyclerView1.getAdapter();
-        IEasyItem iEasyItem = (IEasyItem) listFilterAdapter.getItem(position);
+//        final EasyFilterAdapter easyFilterAdapter = (EasyFilterAdapter) mRecyclerView1.getAdapter();
+        IEasyItem iEasyItem = (IEasyItem) easyFilterAdapter.getItem(position);
         if (position >= 0) {
-            listFilterAdapter.setItemChecked(position, true);//标记选中项
+            easyFilterAdapter.setItemChecked(position, true);//标记选中项
         }
         threadExecutor.execute(new Runnable() {
             @Override
             public void run() {
-                rememberPosion(listFilterAdapter, position, fromUserClick);//让父 记住被选中的子的位置
+                rememberPosion(easyFilterAdapter, position, fromUserClick);//让父 记住被选中的子的位置
             }
         });
 
@@ -199,12 +197,12 @@ public class EasyFilterMenuSingle extends EasyFilterMenu {
                     EasyUtils.showView(list2Box);
                     EasyUtils.hideView(mRecyclerView3);
                     EasyUtils.hideView(list3Box);
-                    setMenuList2State(easyItemManager.getChildSelectPosion(), false);
+                    setMenuList2State(easyItemManager.getChildSelectPosition(), false);
                 } else {
                     handleSelectEnd(fromUserClick, iEasyItem);
                 }
             } else {
-                ((ListFilterAdapter) mRecyclerView1.getAdapter()).clearAllChildPosition(); // 点击lise1中的不限制，清除list1中记录的childselected 记录，
+                ((EasyFilterAdapter) mRecyclerView1.getAdapter()).clearAllChildPosition(); // 点击lise1中的不限制，清除list1中记录的childselected 记录，
                 EasyUtils.hideView(mRecyclerView2);
                 EasyUtils.hideView(list2Box);
 
@@ -229,25 +227,25 @@ public class EasyFilterMenuSingle extends EasyFilterMenu {
      * @param position 要选择的位置
      */
     public void setMenuList2State(final int position, final boolean fromUserClick) {
-        final ListFilterAdapter listFilterAdapter = (ListFilterAdapter) mRecyclerView2.getAdapter();
+        final EasyFilterAdapter easyFilterAdapter = (EasyFilterAdapter) mRecyclerView2.getAdapter();
         if (position < 0) {
-            listFilterAdapter.clearChoices();
+            easyFilterAdapter.clearChoices();
             return;
         }
         if (mRecyclerView2 == null) {
             return;
         }
-        IEasyItem iEasyItem = (IEasyItem) listFilterAdapter.getItem(position);
+        IEasyItem iEasyItem = (IEasyItem) easyFilterAdapter.getItem(position);
         if (position >= 0) {
-            listFilterAdapter.setItemChecked(position, true);//标记选中项
+            easyFilterAdapter.setItemChecked(position, true);//标记选中项
         }
         threadExecutor.execute(new Runnable() {
             @Override
             public void run() {
                 if (fromUserClick) {//防止第一次显示时候执行，主要是在list1的item被点击后
-                    ((ListFilterAdapter) mRecyclerView1.getAdapter()).clearAllChildPosition(); // 清除list1中记录的childposion，
+                    ((EasyFilterAdapter) mRecyclerView1.getAdapter()).clearAllChildPosition(); // 清除list1中记录的childposion，
                 }
-                rememberPosion(listFilterAdapter, position, fromUserClick);//MULTI状态才会记住
+                rememberPosion(easyFilterAdapter, position, fromUserClick);//MULTI状态才会记住
 
                 post(new Runnable() {
                     @Override
@@ -264,7 +262,7 @@ public class EasyFilterMenuSingle extends EasyFilterMenu {
                     addList3Items(easyItemManager);
                     EasyUtils.showView(mRecyclerView3);
                     EasyUtils.showView(list3Box);
-                    setMenuList3State(easyItemManager.getChildSelectPosion(), false);
+                    setMenuList3State(easyItemManager.getChildSelectPosition(), false);
                 } else {
                     if (fromUserClick) {
                         changMenuText(iEasyItem);//这里和listview1有区别
@@ -278,7 +276,7 @@ public class EasyFilterMenuSingle extends EasyFilterMenu {
                     @Override
                     public void run() {
                         if (fromUserClick) {//防止第一次显示时候执行，主要是在list1的item被点击后
-                            ((ListFilterAdapter) mRecyclerView2.getAdapter()).clearAllChildPosition(); // 清除list1中记录的childposion，
+                            ((EasyFilterAdapter) mRecyclerView2.getAdapter()).clearAllChildPosition(); // 清除list1中记录的childposion，
                         }
                     }
                 });
@@ -302,25 +300,25 @@ public class EasyFilterMenuSingle extends EasyFilterMenu {
      * @param fromUserClick 是否来自用户点击
      */
     public void setMenuList3State(final int position, final boolean fromUserClick) {
-        final ListFilterAdapter listFilterAdapter = (ListFilterAdapter) mRecyclerView1.getAdapter();
+        final EasyFilterAdapter easyFilterAdapter = (EasyFilterAdapter) mRecyclerView1.getAdapter();
         if (position < 0) {
-            listFilterAdapter.clearSelection();
+            easyFilterAdapter.clearSelection();
             return;
         }
         if (mRecyclerView3 == null) {
             return;
         }
-        IEasyItem iEasyItem = (IEasyItem) listFilterAdapter.getItem(position);
+        IEasyItem iEasyItem = (IEasyItem) easyFilterAdapter.getItem(position);
         if (position >= 0) {
-            listFilterAdapter.setItemChecked(position, true);//标记选中项
+            easyFilterAdapter.setItemChecked(position, true);//标记选中项
         }
         threadExecutor.execute(new Runnable() {
             @Override
             public void run() {
                 if (fromUserClick) {
-                    ((ListFilterAdapter) mRecyclerView2.getAdapter()).clearAllChildPosition(); // 清除list1中记录的chil dposion，
+                    ((EasyFilterAdapter) mRecyclerView2.getAdapter()).clearAllChildPosition(); // 清除list1中记录的chil dposion，
                 }
-                rememberPosion(listFilterAdapter, position, fromUserClick);//MULTI状态才会记住
+                rememberPosion(easyFilterAdapter, position, fromUserClick);//MULTI状态才会记住
                 post(new Runnable() {
                     @Override
                     public void run() {
@@ -373,8 +371,8 @@ public class EasyFilterMenuSingle extends EasyFilterMenu {
      * @param easyItemManager 父IEasyItem
      */
     private void addList1Items(EasyItemManager easyItemManager) {
-        ListFilterAdapter listFilterAdapter = (ListFilterAdapter) mRecyclerView1.getAdapter();
-        listFilterAdapter.setEasyItemManager(easyItemManager);
+        EasyFilterAdapter easyFilterAdapter = (EasyFilterAdapter) mRecyclerView1.getAdapter();
+        easyFilterAdapter.setEasyItemManager(easyItemManager);
     }
 
     /**
@@ -384,8 +382,8 @@ public class EasyFilterMenuSingle extends EasyFilterMenu {
      */
     private void addList2Items(EasyItemManager easyItemManager) {
         if (mRecyclerView2 != null) {
-            ListFilterAdapter listFilterAdapter = (ListFilterAdapter) mRecyclerView2.getAdapter();
-            listFilterAdapter.setEasyItemManager(easyItemManager);
+            EasyFilterAdapter easyFilterAdapter = (EasyFilterAdapter) mRecyclerView2.getAdapter();
+            easyFilterAdapter.setEasyItemManager(easyItemManager);
         }
     }
 
@@ -396,8 +394,8 @@ public class EasyFilterMenuSingle extends EasyFilterMenu {
      */
     private void addList3Items(EasyItemManager easyItemManager) {
         if (mRecyclerView3 != null) {
-            ListFilterAdapter listFilterAdapter = (ListFilterAdapter) mRecyclerView3.getAdapter();
-            listFilterAdapter.setEasyItemManager(easyItemManager);
+            EasyFilterAdapter easyFilterAdapter = (EasyFilterAdapter) mRecyclerView3.getAdapter();
+            easyFilterAdapter.setEasyItemManager(easyItemManager);
         }
     }
 
@@ -430,10 +428,10 @@ public class EasyFilterMenuSingle extends EasyFilterMenu {
      * @param position 位置
      */
 
-    public void rememberPosion(ListFilterAdapter adapter, int position, boolean fromUserClick) {
+    public void rememberPosion(EasyFilterAdapter adapter, int position, boolean fromUserClick) {
         EasyItemManager easyItemManager = adapter.getEasyItemManager();
         if (easyItemManager != null) {
-            adapter.getEasyItemManager().setChildSelectPosion(position);
+            adapter.getEasyItemManager().setChildSelectPosition(position);
             if (fromUserClick) {
                 adapter.getEasyItemManager().setChildSelected(true);
             }
@@ -446,20 +444,26 @@ public class EasyFilterMenuSingle extends EasyFilterMenu {
 
     @Override
     protected void onCleanMenuStatus() {
-        final ListFilterAdapter listFilterAdapter = (ListFilterAdapter) mRecyclerView1.getAdapter();
+        final EasyFilterAdapter easyFilterAdapter = (EasyFilterAdapter) mRecyclerView1.getAdapter();
         threadExecutor.execute(new Runnable() {
             @Override
             public void run() {
-                listFilterAdapter.clearAllChildPosition();
+                easyFilterAdapter.clearAllChildPosition();
             }
         });
-        setMenuList1State(0, false);
+        setMenuList1State(easyFilterAdapter.getEasyItemManager().getDefaultSelectPosition(), false);
     }
+
+    public void setRecyclerView1SelectPosition() {
+        EasyFilterAdapter easyFilterAdapter = (EasyFilterAdapter) mRecyclerView1.getAdapter();
+        easyFilterAdapter.getEasyItemManager().setChildSelectPosition(-1);
+    }
+
 
     @Override
     public EasyItemManager getMenuData() {
-        ListFilterAdapter listFilterAdapter = (ListFilterAdapter) mRecyclerView1.getAdapter();
-        return listFilterAdapter.getEasyItemManager();
+        EasyFilterAdapter easyFilterAdapter = (EasyFilterAdapter) mRecyclerView1.getAdapter();
+        return easyFilterAdapter.getEasyItemManager();
     }
 
     protected EasyMenuStates onCreateMenuStates(EasyItemManager easyItemManager) {
@@ -472,7 +476,7 @@ public class EasyFilterMenuSingle extends EasyFilterMenu {
 
     @Override
     public boolean hasSelectedValues() {
-        ListFilterAdapter adapter = (ListFilterAdapter) mRecyclerView1.getAdapter();
+        EasyFilterAdapter adapter = (EasyFilterAdapter) mRecyclerView1.getAdapter();
         List list = adapter.getSelectedPositions();
         if (list == null || list.size() <= 0) {
             return false;

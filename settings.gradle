@@ -1,2 +1,2 @@
 include ':easyfiltermenu'
-//include ':simple'
+include ':simple'

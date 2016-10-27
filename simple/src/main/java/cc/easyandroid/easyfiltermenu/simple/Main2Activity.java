@@ -60,7 +60,7 @@ public class Main2Activity extends AppCompatActivity {
         }
         lists1.add(0, new NoLimitItem1());
         EasyItemManager easyItemManager1 = new EasyItemManager(lists1);
-        easyItemManager1.setChildSelectPosion(2);
+        easyItemManager1.setChildSelectPosition(2);
 //        menuFilter1.setMenuData(false, easyItemManager1);
         lists2.add(0, new NoLimitItem1());
 //        menuFilter2.setMenuData(false, new EasyItemManager(lists2));
@@ -168,7 +168,7 @@ public class Main2Activity extends AppCompatActivity {
 //        menuFilter2.setOnCustomViewConfirmClickListener(new EasyFilterListener.OnCustomViewConfirmClickListener<EasyFilterMenuSingle>() {
 //            @Override
 //            public void onClick(ListView listview, ViewGroup viewGroup, EasyFilterMenuSingle easyFilterMenu) {
-////                easyFilterMenu.rememberPosion((ListFilterAdapter) listview.getAdapter(), ListView.INVALID_POSITION, false);
+////                easyFilterMenu.rememberPosion((EasyFilterAdapter) listview.getAdapter(), ListView.INVALID_POSITION, false);
 //            }
 //        });
         SparseArray<EasyMenuStates> singleSelectionMenuStates = getIntent().getExtras().getSparseParcelableArray("sparseArray");
@@ -231,9 +231,9 @@ public class Main2Activity extends AppCompatActivity {
                 ArrayList<? extends IEasyItem> iEasyItems = mEasyItemManager.getEasyItems();
                 for (IEasyItem iEasyItem : iEasyItems) {
                     ArrayList<? extends IEasyItem> childEasyItems = iEasyItem.getEasyItemManager().getEasyItems();
-                    int childSelectPosion = iEasyItem.getEasyItemManager().getChildSelectPosion();
+                    int childSelectPosion = iEasyItem.getEasyItemManager().getChildSelectPosition();
                     if (childSelectPosion >= 0 && childSelectPosion < childEasyItems.size()) {
-                        easyParameter.putAll(childEasyItems.get(iEasyItem.getEasyItemManager().getChildSelectPosion()).getEasyParameter());
+                        easyParameter.putAll(childEasyItems.get(iEasyItem.getEasyItemManager().getChildSelectPosition()).getEasyParameter());
                     }
                 }
             }

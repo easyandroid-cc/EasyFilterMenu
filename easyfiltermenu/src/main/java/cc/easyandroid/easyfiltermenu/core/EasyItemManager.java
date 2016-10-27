@@ -62,11 +62,11 @@ public class EasyItemManager implements Serializable {
         this.mChildSelected = childSelected;
     }
 
-    public int getChildSelectPosion() {
+    public int getChildSelectPosition() {
         return mChildSelectPosition;
     }
 
-    public void setChildSelectPosion(int posion) {
+    public void setChildSelectPosition(int posion) {
         this.mChildSelectPosition = posion;
     }
 

@@ -6,7 +6,7 @@ import android.util.AttributeSet;
 
 import java.util.Collection;
 
-import cc.easyandroid.easyfiltermenu.core.ListFilterAdapter;
+import cc.easyandroid.easyfiltermenu.core.EasyFilterAdapter;
 
 /**
  * 1点击gradview的item时候，将选择的item记录在list item的临时变量中，
@@ -44,7 +44,7 @@ public class EasyFileterMenuCustom extends EasyFilterMenuSingle {
     }
 
     public void clearTempSelect() {
-        ListFilterAdapter adapter = (ListFilterAdapter) mRecyclerView1.getAdapter();
+        EasyFilterAdapter adapter = (EasyFilterAdapter) mRecyclerView1.getAdapter();
         adapter.clearSelectTempPosition();
     }
 
