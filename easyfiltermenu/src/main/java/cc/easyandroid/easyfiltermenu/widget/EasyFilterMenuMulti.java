@@ -134,6 +134,11 @@ public class EasyFilterMenuMulti extends EasyFilterMenu {
         }
     }
 
+    public List<Integer> getSelectedPositions() {
+        ListFilterAdapter listFilterAdapter = (ListFilterAdapter) mRecyclerView1.getAdapter();
+        return listFilterAdapter.getSelectedPositions();
+    }
+
     /**
      * 添加数据到第一个列表
      *
