@@ -1,4 +1,4 @@
-package cc.easyandroid.listfiltermenu.simple;
+package cc.easyandroid.easyfiltermenu.simple;
 
 import android.content.Context;
 import android.util.SparseBooleanArray;
@@ -16,8 +16,8 @@ import java.util.List;
 
 import cc.easyandroid.easyrecyclerview.EasyFlexibleAdapter;
 import cc.easyandroid.easyrecyclerview.holders.FlexibleViewHolder;
-import cc.easyandroid.listfiltermenu.core.EasyItemManager;
-import cc.easyandroid.listfiltermenu.core.IEasyItem;
+import cc.easyandroid.easyfiltermenu.core.EasyItemManager;
+import cc.easyandroid.easyfiltermenu.core.IEasyItem;
 
 public class Item2 extends Text2.ResultEntity implements IEasyItem<Item2.ListViewHolder> {
     EasyItemManager easyItemManager;//一定要是单列的

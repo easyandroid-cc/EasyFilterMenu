@@ -1,4 +1,4 @@
-package cc.easyandroid.listfiltermenu.core;
+package cc.easyandroid.easyfiltermenu.core;
 
 
 import android.support.v4.util.ArrayMap;
@@ -8,7 +8,7 @@ import android.view.View;
 
 import java.util.ArrayList;
 
-import cc.easyandroid.listfiltermenu.widget.EasyFilterMenu;
+import cc.easyandroid.easyfiltermenu.widget.EasyFilterMenu;
 
 public class EasyMenuManager implements EasyFilterListener.OnMenuShowListener, EasyFilterListener.OnEasyMenuParasChangedListener {
     private ArrayMap<String, String> easyMenuAllParas = new ArrayMap<>();//保存全部参数

@@ -1,4 +1,4 @@
-package cc.easyandroid.listfiltermenu.core;
+package cc.easyandroid.easyfiltermenu.core;
 
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;

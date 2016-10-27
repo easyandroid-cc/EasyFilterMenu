@@ -1,4 +1,4 @@
-package cc.easyandroid.listfiltermenu.widget;
+package cc.easyandroid.easyfiltermenu.widget;
 
 import android.content.Context;
 import android.content.res.TypedArray;
@@ -19,12 +19,12 @@ import java.util.concurrent.Executor;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ThreadFactory;
 
-import cc.easyandroid.listfiltermenu.R;
-import cc.easyandroid.listfiltermenu.core.AnimatorPopup;
-import cc.easyandroid.listfiltermenu.core.EasyFilterListener;
-import cc.easyandroid.listfiltermenu.core.EasyItemManager;
-import cc.easyandroid.listfiltermenu.core.EasyMenuStates;
-import cc.easyandroid.listfiltermenu.core.IEasyItem;
+import cc.easyandroid.easyfiltermenu.R;
+import cc.easyandroid.easyfiltermenu.core.AnimatorPopup;
+import cc.easyandroid.easyfiltermenu.core.EasyFilterListener;
+import cc.easyandroid.easyfiltermenu.core.EasyItemManager;
+import cc.easyandroid.easyfiltermenu.core.EasyMenuStates;
+import cc.easyandroid.easyfiltermenu.core.IEasyItem;
 
 import static android.os.Process.THREAD_PRIORITY_BACKGROUND;
 

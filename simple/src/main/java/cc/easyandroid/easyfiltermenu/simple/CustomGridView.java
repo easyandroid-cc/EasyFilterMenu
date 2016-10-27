@@ -1,4 +1,4 @@
-package cc.easyandroid.listfiltermenu.simple;
+package cc.easyandroid.easyfiltermenu.simple;
 
 import android.content.Context;
 import android.util.AttributeSet;

@@ -1,6 +1,5 @@
-package cc.easyandroid.listfiltermenu.simple;
+package cc.easyandroid.easyfiltermenu.simple;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.util.ArrayMap;
 import android.support.v7.app.AppCompatActivity;
@@ -16,21 +15,19 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Set;
 
-import cc.easyandroid.listfiltermenu.core.EasyFilterListener;
-import cc.easyandroid.listfiltermenu.core.EasyItemManager;
-import cc.easyandroid.listfiltermenu.core.EasyMenuStates;
-import cc.easyandroid.listfiltermenu.core.IEasyItem;
-import cc.easyandroid.listfiltermenu.core.SimpleEasyItem;
-import cc.easyandroid.listfiltermenu.simple.no.NoLimitItem1;
-import cc.easyandroid.listfiltermenu.widget.EasyFileterMenuCustom;
-import cc.easyandroid.listfiltermenu.widget.EasyFilterMenu;
-import cc.easyandroid.listfiltermenu.widget.EasyFilterMenuMulti;
-import cc.easyandroid.listfiltermenu.widget.EasyFilterMenuSingle;
-import cc.easyandroid.listfiltermenu.widget.EasyMenuContainer;
+import cc.easyandroid.easyfiltermenu.core.EasyFilterListener;
+import cc.easyandroid.easyfiltermenu.core.EasyItemManager;
+import cc.easyandroid.easyfiltermenu.core.EasyMenuStates;
+import cc.easyandroid.easyfiltermenu.core.IEasyItem;
+import cc.easyandroid.easyfiltermenu.core.SimpleEasyItem;
+import cc.easyandroid.easyfiltermenu.simple.no.NoLimitItem1;
+import cc.easyandroid.easyfiltermenu.widget.EasyFileterMenuCustom;
+import cc.easyandroid.easyfiltermenu.widget.EasyFilterMenu;
+import cc.easyandroid.easyfiltermenu.widget.EasyFilterMenuMulti;
+import cc.easyandroid.easyfiltermenu.widget.EasyFilterMenuSingle;
+import cc.easyandroid.easyfiltermenu.widget.EasyMenuContainer;
 
-//import cc.easyandroid.listfiltermenu.simple.no.NoLimitItem1;
-
-public class MainActivity extends AppCompatActivity {
+public class Main2Activity extends AppCompatActivity {
     EasyFilterMenuSingle menuFilter1;
     EasyFilterMenuSingle menuFilter2;
     EasyFilterMenuMulti menuFilter3;
@@ -41,7 +38,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_main2);
         final Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         menuFilter1 = (EasyFilterMenuSingle) findViewById(R.id.menuFilter1);
@@ -58,42 +55,49 @@ public class MainActivity extends AppCompatActivity {
         for (int i = 0; i < lists1.size(); i++) {
             Item1 item1 = (Item1) lists1.get(i);
             ArrayList lists5 = item1.getEasyItemManager().getEasyItems();
-            lists5.add(0, new NoLimitItem1(item1.getEasyItemTag()));
+            lists5.add(0, new NoLimitItem1(item1.getEasyItemTag().toString()));
         }
-        lists1.add(0, new NoLimitItem1(null));
+        lists1.add(0, new NoLimitItem1());
         EasyItemManager easyItemManager1 = new EasyItemManager(lists1);
         easyItemManager1.setChildSelectPosion(2);
-        menuFilter1.setMenuData(false, easyItemManager1);
+//        menuFilter1.setMenuData(false, easyItemManager1);
         lists2.add(0, new NoLimitItem1());
-        menuFilter2.setMenuData(false, new EasyItemManager(lists2));
-        lists3.add(0, new NoLimitItem1(IEasyItem.MENUMULTI_NOLIMITITEM_TAG));
-        menuFilter3.setMenuData(false, new EasyItemManager(lists3));
+//        menuFilter2.setMenuData(false, new EasyItemManager(lists2));
+        lists3.add(0, new NoLimitItem1());
+//        menuFilter3.setMenuData(false, new EasyItemManager(lists3));
 
 //        QfangResult<PagingResult<Area>> qfangResult;
 
-        menuFilter4.setMenuData(false, new EasyItemManager(lists4));
+//        menuFilter4.setMenuData(false, new EasyItemManager(lists4));
 
-//        menuFilter2.setOnMenuWithoutDataClickLinstener(new EasyFilterMenu.OnMenuWithoutDataClickLinstener() {
-//            @Override
-//            public void withoutData(EasyFilterMenu menu) {
-//                Toast.makeText(getApplicationContext(), "没有数据,马上加载数据...", Toast.LENGTH_SHORT).show();
-//                menuFilter2.setMenuData(true, new EasyItemManager(lists2));
-//            }
-//        });
-//        menuFilter3.setOnMenuWithoutDataClickLinstener(new EasyFilterMenu.OnMenuWithoutDataClickLinstener() {
-//            @Override
-//            public void withoutData(EasyFilterMenu menu) {
-//                Toast.makeText(getApplicationContext(), "没有数据,马上加载数据...", Toast.LENGTH_SHORT).show();
-//                menuFilter3.setMenuData(true, new EasyItemManager(lists3));
-//            }
-//        });
-//        menuFilter4.setOnMenuWithoutDataClickLinstener(new EasyFilterMenu.OnMenuWithoutDataClickLinstener() {
-//            @Override
-//            public void withoutData(EasyFilterMenu menu) {
-//                Toast.makeText(getApplicationContext(), "没有数据,马上加载数据...", Toast.LENGTH_SHORT).show();
-//                menuFilter4.setMenuData(true, new EasyItemManager(lists4));
-//            }
-//        });
+        menuFilter1.setOnMenuWithoutDataClickLinstener(new EasyFilterMenu.OnMenuWithoutDataClickLinstener() {
+            @Override
+            public void withoutData(EasyFilterMenu menu) {
+                Toast.makeText(getApplicationContext(), "没有数据,马上加载数据...", Toast.LENGTH_SHORT).show();
+                menuFilter1.setMenuData(true, new EasyItemManager(lists1));
+            }
+        });
+        menuFilter2.setOnMenuWithoutDataClickLinstener(new EasyFilterMenu.OnMenuWithoutDataClickLinstener() {
+            @Override
+            public void withoutData(EasyFilterMenu menu) {
+                Toast.makeText(getApplicationContext(), "没有数据,马上加载数据...", Toast.LENGTH_SHORT).show();
+                menuFilter2.setMenuData(true, new EasyItemManager(lists2));
+            }
+        });
+        menuFilter3.setOnMenuWithoutDataClickLinstener(new EasyFilterMenu.OnMenuWithoutDataClickLinstener() {
+            @Override
+            public void withoutData(EasyFilterMenu menu) {
+                Toast.makeText(getApplicationContext(), "没有数据,马上加载数据...", Toast.LENGTH_SHORT).show();
+                menuFilter3.setMenuData(true, new EasyItemManager(lists3));
+            }
+        });
+        menuFilter4.setOnMenuWithoutDataClickLinstener(new EasyFilterMenu.OnMenuWithoutDataClickLinstener() {
+            @Override
+            public void withoutData(EasyFilterMenu menu) {
+                Toast.makeText(getApplicationContext(), "没有数据,马上加载数据...", Toast.LENGTH_SHORT).show();
+                menuFilter4.setMenuData(true, new EasyItemManager(lists4));
+            }
+        });
         menuFilter1.setOnMenuListItemClickListener(new EasyFilterListener.OnMenuListItemClickListener() {
             @Override
             public void onClick(EasyFilterMenu easyFilterMenu, IEasyItem iEasyItem) {
@@ -101,24 +105,8 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        findViewById(R.id.click).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                setupBuntonClickListener(easyMenuContainer);
-            }
-        });
-        findViewById(R.id.click2).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                setupBuntonClickListener(null);
-            }
-        });
-        findViewById(R.id.click3).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                easyMenuContainer.clearAllMenuStates();
-            }
-        });
+
+
         menuFilter3.setOnCustomViewConfirmClickListener(new EasyFilterListener.OnCustomViewConfirmClickListener() {
             @Override
             public void onClick(View listview, ViewGroup viewGroup) {
@@ -182,6 +170,10 @@ public class MainActivity extends AppCompatActivity {
 ////                easyFilterMenu.rememberPosion((ListFilterAdapter) listview.getAdapter(), ListView.INVALID_POSITION, false);
 //            }
 //        });
+        SparseArray<EasyMenuStates> singleSelectionMenuStates = getIntent().getExtras().getSparseParcelableArray("sparseArray");
+        if (singleSelectionMenuStates != null) {
+            easyMenuContainer.setAllMenuStates(singleSelectionMenuStates);
+        }
     }
 
     private void setupListItemClickListener(EasyFilterMenu easyFilterMenu) {
@@ -194,14 +186,14 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void setupBuntonClickListener(EasyMenuContainer easyMenuContainer) {
-        Intent intent = new Intent(getApplicationContext(), Main2Activity.class);
-        Bundle bundle = new Bundle();
-        if (easyMenuContainer != null) {
-            SparseArray<EasyMenuStates> sparseArray = easyMenuContainer.getAllMenuStates();
-            bundle.putSparseParcelableArray("sparseArray", sparseArray);
-        }
-        intent.putExtras(bundle);
-        startActivity(intent);
+//        Intent intent = new Intent(getApplicationContext(), Main2Activity.class);
+//        Bundle bundle = new Bundle();
+//        if (easyMenuContainer != null) {
+//            SparseArray<EasyMenuStates> sparseArray = easyMenuContainer.getAllMenuStates();
+//            bundle.putSparseParcelableArray("sparseArray", sparseArray);
+//        }
+//        intent.putExtras(bundle);
+//        startActivity(intent);
     }
 
 
@@ -252,8 +244,5 @@ public class MainActivity extends AppCompatActivity {
             return mEasyItemManager;
         }
     }
-//    SparseArray<EasyMenuStates> singleSelectionMenuStates = getIntent().getExtras().getSparseParcelableArray("sparseArray");
-//    if (singleSelectionMenuStates != null) {
-//        easyMenuContainer.setAllMenuStates(singleSelectionMenuStates);
-//    }
+
 }

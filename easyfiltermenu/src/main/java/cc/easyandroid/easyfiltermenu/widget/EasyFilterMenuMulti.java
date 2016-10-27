@@ -1,4 +1,4 @@
-package cc.easyandroid.listfiltermenu.widget;
+package cc.easyandroid.easyfiltermenu.widget;
 
 import android.content.Context;
 import android.support.v7.widget.LinearLayoutManager;
@@ -12,11 +12,11 @@ import android.view.ViewGroup;
 import java.util.List;
 
 import cc.easyandroid.easyrecyclerview.EasyFlexibleAdapter;
-import cc.easyandroid.listfiltermenu.R;
-import cc.easyandroid.listfiltermenu.core.EasyItemManager;
-import cc.easyandroid.listfiltermenu.core.EasyMenuStates;
-import cc.easyandroid.listfiltermenu.core.IEasyItem;
-import cc.easyandroid.listfiltermenu.core.ListFilterAdapter;
+import cc.easyandroid.easyfiltermenu.R;
+import cc.easyandroid.easyfiltermenu.core.EasyItemManager;
+import cc.easyandroid.easyfiltermenu.core.EasyMenuStates;
+import cc.easyandroid.easyfiltermenu.core.IEasyItem;
+import cc.easyandroid.easyfiltermenu.core.ListFilterAdapter;
 
 /**
  * 单列表的多项选择

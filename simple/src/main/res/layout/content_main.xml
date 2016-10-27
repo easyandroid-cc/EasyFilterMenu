@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<cc.easyandroid.listfiltermenu.widget.EasyMenuContainer xmlns:android="http://schemas.android.com/apk/res/android"
+<cc.easyandroid.easyfiltermenu.widget.EasyMenuContainer xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/easyMenuContainer"
@@ -10,7 +10,7 @@
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:showIn="@layout/activity_main">
 
-    <cc.easyandroid.listfiltermenu.widget.EasyFilterMenuSingle
+    <cc.easyandroid.easyfiltermenu.widget.EasyFilterMenuSingle
         android:id="@+id/menuFilter1"
         android:layout_width="0dp"
         android:layout_height="match_parent"
@@ -20,7 +20,7 @@
         app:menuContentLayout="@layout/menu_content_single_layout"
         app:menuTitle="区域" />
 
-    <cc.easyandroid.listfiltermenu.widget.EasyFilterMenuSingle
+    <cc.easyandroid.easyfiltermenu.widget.EasyFilterMenuSingle
         android:id="@+id/menuFilter2"
         android:layout_width="0dp"
         android:layout_height="match_parent"
@@ -30,7 +30,7 @@
         app:menuContentLayout="@layout/zdy_single_layout"
         app:menuTitle="售价" />
 
-    <cc.easyandroid.listfiltermenu.widget.EasyFilterMenuMulti
+    <cc.easyandroid.easyfiltermenu.widget.EasyFilterMenuMulti
         android:id="@+id/menuFilter3"
         android:layout_width="0dp"
         android:layout_height="match_parent"
@@ -40,7 +40,7 @@
         app:menuContentLayout="@layout/menu_content_multi_layout"
         app:menuTitle="间隔" />
 
-    <cc.easyandroid.listfiltermenu.widget.EasyFileterMenuCustom
+    <cc.easyandroid.easyfiltermenu.widget.EasyFileterMenuCustom
         android:id="@+id/menuFilter4"
         android:layout_width="0dp"
         android:layout_height="match_parent"
@@ -62,4 +62,4 @@
     <!--app:showUnlimiteds="list2|list1"-->
     <!--app:unlimitedText="不限" />-->
 
-</cc.easyandroid.listfiltermenu.widget.EasyMenuContainer>
+</cc.easyandroid.easyfiltermenu.widget.EasyMenuContainer>

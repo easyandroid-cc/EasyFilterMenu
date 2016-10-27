@@ -9,7 +9,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".MainActivity"
+            android:name="cc.easyandroid.easyfiltermenu.simple.MainActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
 
             >
@@ -26,7 +26,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".Main2Activity"
+            android:name="cc.easyandroid.easyfiltermenu.simple.Main2Activity"
             android:label="@string/title_activity_main2"
             android:theme="@style/AppTheme"></activity>
     </application>

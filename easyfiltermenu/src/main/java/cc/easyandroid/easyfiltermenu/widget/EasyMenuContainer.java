@@ -1,4 +1,4 @@
-package cc.easyandroid.listfiltermenu.widget;
+package cc.easyandroid.easyfiltermenu.widget;
 
 import android.content.Context;
 import android.support.v4.util.ArrayMap;
@@ -8,9 +8,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 
-import cc.easyandroid.listfiltermenu.core.EasyFilterListener;
-import cc.easyandroid.listfiltermenu.core.EasyMenuManager;
-import cc.easyandroid.listfiltermenu.core.EasyMenuStates;
+import cc.easyandroid.easyfiltermenu.core.EasyFilterListener;
+import cc.easyandroid.easyfiltermenu.core.EasyMenuManager;
+import cc.easyandroid.easyfiltermenu.core.EasyMenuStates;
 
 /**
  *

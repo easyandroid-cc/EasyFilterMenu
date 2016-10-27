@@ -20,7 +20,7 @@
         android:textColor="@drawable/menutitle_textcolor_selector"
         android:textSize="14sp" />
 
-    <cc.easyandroid.listfiltermenu.simple.CustomGridView
+    <cc.easyandroid.easyfiltermenu.simple.CustomGridView
         android:id="@+id/gridview"
         android:layout_width="match_parent"
         android:scrollbars="none"

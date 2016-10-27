@@ -1,10 +1,10 @@
-package cc.easyandroid.listfiltermenu.core;
+package cc.easyandroid.easyfiltermenu.core;
 
 import android.support.v4.util.SimpleArrayMap;
 import android.view.View;
 import android.view.ViewGroup;
 
-import cc.easyandroid.listfiltermenu.widget.EasyFilterMenu;
+import cc.easyandroid.easyfiltermenu.widget.EasyFilterMenu;
 
 /**
  * Created by Administrator on 2016/5/26.

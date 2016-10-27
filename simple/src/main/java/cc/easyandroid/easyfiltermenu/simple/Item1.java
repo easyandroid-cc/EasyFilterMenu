@@ -1,4 +1,4 @@
-package cc.easyandroid.listfiltermenu.simple;
+package cc.easyandroid.easyfiltermenu.simple;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,8 +11,8 @@ import java.util.List;
 
 import cc.easyandroid.easyrecyclerview.EasyFlexibleAdapter;
 import cc.easyandroid.easyrecyclerview.holders.FlexibleViewHolder;
-import cc.easyandroid.listfiltermenu.core.EasyItemManager;
-import cc.easyandroid.listfiltermenu.core.IEasyItem;
+import cc.easyandroid.easyfiltermenu.core.EasyItemManager;
+import cc.easyandroid.easyfiltermenu.core.IEasyItem;
 
 /**
  * Created by cgpllx on 2016/10/17.

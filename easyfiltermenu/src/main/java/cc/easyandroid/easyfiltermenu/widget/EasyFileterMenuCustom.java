@@ -1,4 +1,4 @@
-package cc.easyandroid.listfiltermenu.widget;
+package cc.easyandroid.easyfiltermenu.widget;
 
 import android.content.Context;
 import android.text.TextUtils;
@@ -6,7 +6,7 @@ import android.util.AttributeSet;
 
 import java.util.Collection;
 
-import cc.easyandroid.listfiltermenu.core.ListFilterAdapter;
+import cc.easyandroid.easyfiltermenu.core.ListFilterAdapter;
 
 /**
  * 1点击gradview的item时候，将选择的item记录在list item的临时变量中，

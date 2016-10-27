@@ -1,4 +1,4 @@
-package cc.easyandroid.listfiltermenu.simple;
+package cc.easyandroid.easyfiltermenu.simple;
 
 /**
  * Created by cgpllx on 2016/10/25.
