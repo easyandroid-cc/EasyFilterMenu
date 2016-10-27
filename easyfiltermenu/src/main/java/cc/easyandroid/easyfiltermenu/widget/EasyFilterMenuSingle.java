@@ -454,9 +454,9 @@ public class EasyFilterMenuSingle extends EasyFilterMenu {
         setMenuList1State(easyFilterAdapter.getEasyItemManager().getDefaultSelectPosition(), false);
     }
 
-    public void setRecyclerView1SelectPosition() {
+    public void setRecyclerView1SelectPosition(int position) {
         EasyFilterAdapter easyFilterAdapter = (EasyFilterAdapter) mRecyclerView1.getAdapter();
-        easyFilterAdapter.getEasyItemManager().setChildSelectPosition(-1);
+        easyFilterAdapter.getEasyItemManager().setChildSelectPosition(position);
     }
 
 
