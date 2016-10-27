@@ -26,6 +26,7 @@ import cc.easyandroid.easyfiltermenu.widget.EasyFilterMenu;
 import cc.easyandroid.easyfiltermenu.widget.EasyFilterMenuMulti;
 import cc.easyandroid.easyfiltermenu.widget.EasyFilterMenuSingle;
 import cc.easyandroid.easyfiltermenu.widget.EasyMenuContainer;
+import cc.easyandroid.listfiltermenu.simple.R;
 
 public class Main2Activity extends AppCompatActivity {
     EasyFilterMenuSingle menuFilter1;

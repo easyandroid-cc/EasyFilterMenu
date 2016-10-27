@@ -14,10 +14,11 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-import cc.easyandroid.easyrecyclerview.EasyFlexibleAdapter;
-import cc.easyandroid.easyrecyclerview.holders.FlexibleViewHolder;
 import cc.easyandroid.easyfiltermenu.core.EasyItemManager;
 import cc.easyandroid.easyfiltermenu.core.IEasyItem;
+import cc.easyandroid.easyrecyclerview.EasyFlexibleAdapter;
+import cc.easyandroid.easyrecyclerview.holders.FlexibleViewHolder;
+import cc.easyandroid.listfiltermenu.simple.R;
 
 public class Item2 extends Text2.ResultEntity implements IEasyItem<Item2.ListViewHolder> {
     EasyItemManager easyItemManager;//一定要是单列的

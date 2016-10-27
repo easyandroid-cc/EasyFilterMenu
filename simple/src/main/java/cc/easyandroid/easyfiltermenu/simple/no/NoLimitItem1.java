@@ -11,11 +11,11 @@ import android.widget.Toast;
 import java.util.HashMap;
 import java.util.List;
 
-import cc.easyandroid.easyrecyclerview.EasyFlexibleAdapter;
-import cc.easyandroid.easyrecyclerview.holders.FlexibleViewHolder;
 import cc.easyandroid.easyfiltermenu.core.EasyItemManager;
 import cc.easyandroid.easyfiltermenu.core.IEasyItem;
-import cc.easyandroid.easyfiltermenu.simple.R;
+import cc.easyandroid.easyrecyclerview.EasyFlexibleAdapter;
+import cc.easyandroid.easyrecyclerview.holders.FlexibleViewHolder;
+import cc.easyandroid.listfiltermenu.simple.R;
 
 /**
  * Created by cgpllx on 2016/10/17.

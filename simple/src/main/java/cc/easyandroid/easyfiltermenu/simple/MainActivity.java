@@ -27,6 +27,7 @@ import cc.easyandroid.easyfiltermenu.widget.EasyFilterMenu;
 import cc.easyandroid.easyfiltermenu.widget.EasyFilterMenuMulti;
 import cc.easyandroid.easyfiltermenu.widget.EasyFilterMenuSingle;
 import cc.easyandroid.easyfiltermenu.widget.EasyMenuContainer;
+import cc.easyandroid.listfiltermenu.simple.R;
 
 //import cc.easyandroid.listfiltermenu.simple.no.NoLimitItem1;
 
