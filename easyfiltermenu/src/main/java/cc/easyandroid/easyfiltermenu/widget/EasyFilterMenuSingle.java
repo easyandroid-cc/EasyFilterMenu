@@ -444,14 +444,19 @@ public class EasyFilterMenuSingle extends EasyFilterMenu {
 
     @Override
     protected void onCleanMenuStatus() {
-        final EasyFilterAdapter easyFilterAdapter = (EasyFilterAdapter) mRecyclerView1.getAdapter();
-        threadExecutor.execute(new Runnable() {
-            @Override
-            public void run() {
-                easyFilterAdapter.clearAllChildPosition();
+        if (hasSelectedValues()) {
+            final EasyFilterAdapter easyFilterAdapter = (EasyFilterAdapter) mRecyclerView1.getAdapter();
+            threadExecutor.execute(new Runnable() {
+                @Override
+                public void run() {
+                    easyFilterAdapter.clearAllChildPosition();
+                }
+            });
+            EasyItemManager easyItemManager = easyFilterAdapter.getEasyItemManager();
+            if (easyItemManager != null) {
+                setMenuList1State(easyFilterAdapter.getEasyItemManager().getDefaultSelectPosition(), false);
             }
-        });
-        setMenuList1State(easyFilterAdapter.getEasyItemManager().getDefaultSelectPosition(), false);
+        }
     }
 
     public void setRecyclerView1SelectPosition(int position) {

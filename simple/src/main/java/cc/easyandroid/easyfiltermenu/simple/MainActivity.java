@@ -66,7 +66,7 @@ public class MainActivity extends AppCompatActivity {
         easyItemManager1.setChildSelectPosition(2);
         menuFilter1.setMenuData(false, easyItemManager1);
         lists2.add(0, new NoLimitItem1());
-        menuFilter2.setMenuData(false, new EasyItemManager(lists2));
+//        menuFilter2.setMenuData(false, new EasyItemManager(lists2));
         lists3.add(0, new NoLimitItem1(IEasyItem.MENUMULTI_NOLIMITITEM_TAG));
         menuFilter3.setMenuData(false, new EasyItemManager(lists3));
 
@@ -74,13 +74,13 @@ public class MainActivity extends AppCompatActivity {
 
         menuFilter4.setMenuData(false, new EasyItemManager(lists4));
 
-//        menuFilter2.setOnMenuWithoutDataClickLinstener(new EasyFilterMenu.OnMenuWithoutDataClickLinstener() {
-//            @Override
-//            public void withoutData(EasyFilterMenu menu) {
-//                Toast.makeText(getApplicationContext(), "没有数据,马上加载数据...", Toast.LENGTH_SHORT).show();
-//                menuFilter2.setMenuData(true, new EasyItemManager(lists2));
-//            }
-//        });
+        menuFilter2.setOnMenuWithoutDataClickLinstener(new EasyFilterMenu.OnMenuWithoutDataClickLinstener() {
+            @Override
+            public void withoutData(EasyFilterMenu menu) {
+                Toast.makeText(getApplicationContext(), "没有数据,马上加载数据...", Toast.LENGTH_SHORT).show();
+                menuFilter2.setMenuData(true, new EasyItemManager(lists2));
+            }
+        });
 //        menuFilter3.setOnMenuWithoutDataClickLinstener(new EasyFilterMenu.OnMenuWithoutDataClickLinstener() {
 //            @Override
 //            public void withoutData(EasyFilterMenu menu) {
