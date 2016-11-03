@@ -384,6 +384,7 @@ public class EasyFilterMenuSingle extends EasyFilterMenu {
         if (mRecyclerView2 != null) {
             EasyFilterAdapter easyFilterAdapter = (EasyFilterAdapter) mRecyclerView2.getAdapter();
             easyFilterAdapter.setEasyItemManager(easyItemManager);
+            mRecyclerView2.scrollToPosition(0);
         }
     }
 
