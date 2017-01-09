@@ -76,7 +76,7 @@ public class EasyMenuManager implements EasyFilterListener.OnMenuShowListener, E
 
     public void setOnEasyMenuParasChangedListener(EasyFilterListener.OnEasyMenuParasChangedListener onEasyMenuParasChangedListener) {
         this.onEasyMenuParasChangedListener = onEasyMenuParasChangedListener;
-        if (this.easyMenuAllParas != null) {//第一次，回调给监听者
+        if (this.easyMenuAllParas != null && this.easyMenuAllParas.size() > 0) {//第一次，回调给监听者
             notifyChanged();
         }
     }
