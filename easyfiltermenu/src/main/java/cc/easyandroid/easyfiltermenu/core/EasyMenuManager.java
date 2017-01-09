@@ -105,6 +105,7 @@ public class EasyMenuManager implements EasyFilterListener.OnMenuShowListener, E
                 easyFilterMenu.cleanMenuStates();
             }
         }
+        this.notifyChanged();
     }
 
     public void dismissAllMenuContent() {
