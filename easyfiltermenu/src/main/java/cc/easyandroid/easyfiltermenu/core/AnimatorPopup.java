@@ -5,6 +5,8 @@ import android.animation.AnimatorListenerAdapter;
 import android.animation.ObjectAnimator;
 import android.animation.ValueAnimator;
 import android.graphics.Color;
+import android.graphics.Rect;
+import android.os.Build;
 import android.view.View;
 import android.view.animation.LinearInterpolator;
 import android.widget.PopupWindow;
@@ -116,5 +118,19 @@ public class AnimatorPopup extends PopupWindow {
             return;
         }
         animator_Dismiss.start();
+    }
+
+//    　情景描述：在andorid7.0及以上系统，点击某个view，本来期待有一个Popuwindow在该view下面弹出（调用PopuWindow.showAsDropDown(view)方法）但结果PopuWindow却弹出在view上方，顶在系统状态栏下面。
+//            　　原因：在android7.0上，如果不主动约束PopuWindow的大小，比如，设置布局大小为 MATCH_PARENT,那么PopuWindow会变得尽可能大，以至于 view下方无空间完全显示PopuWindow，而且view又无法向上滚动，此时PopuWindow会主动上移位置，直到可以显示完全。
+//    解决办法：主动约束PopuWindow的内容大小，重写showAsDropDown方法：
+    @Override
+    public void showAsDropDown(View anchor) {
+        if (Build.VERSION.SDK_INT >= 24) {
+            Rect visibleFrame = new Rect();
+            anchor.getGlobalVisibleRect(visibleFrame);
+            int height = anchor.getResources().getDisplayMetrics().heightPixels - visibleFrame.bottom;
+            setHeight(height);
+        }
+        super.showAsDropDown(anchor);
     }
 }
