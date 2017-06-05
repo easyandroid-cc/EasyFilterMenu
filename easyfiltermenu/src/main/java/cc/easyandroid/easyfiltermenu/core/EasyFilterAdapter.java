@@ -14,7 +14,7 @@ public class EasyFilterAdapter extends EasyFlexibleAdapter<IEasyItem> {
     public void setEasyItemManager(EasyItemManager easyItemManager) {
         this.easyItemManager = easyItemManager;
         List list = easyItemManager.getEasyItems();
-        setItems(list);
+        setItemsAndNotifyChanged(list);
     }
 
     public EasyFilterAdapter(LayoutInflater inflater) {
