@@ -26,6 +26,7 @@ dependencies {
     compile 'com.android.support:support-v4:23.1.1'
     compile 'com.android.support:appcompat-v7:23.1.1'
     compile 'com.android.support:recyclerview-v7:23.1.1'
-    compile 'com.github.cgpllx:EasyRecyclerView:1.4.6'
+//    compile 'com.github.cgpllx:EasyRecyclerView:1.4.6'
+    compile 'cc.easyandroid:EasyRecyclerView:1.0.0'
     compile project(':easyfiltermenu')
 }
