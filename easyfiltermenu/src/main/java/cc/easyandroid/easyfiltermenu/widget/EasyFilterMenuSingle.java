@@ -300,7 +300,7 @@ public class EasyFilterMenuSingle extends EasyFilterMenu {
      * @param fromUserClick 是否来自用户点击
      */
     public void setMenuList3State(final int position, final boolean fromUserClick) {
-        final EasyFilterAdapter easyFilterAdapter = (EasyFilterAdapter) mRecyclerView1.getAdapter();
+        final EasyFilterAdapter easyFilterAdapter = (EasyFilterAdapter) mRecyclerView3.getAdapter();
         if (position < 0) {
             easyFilterAdapter.clearSelection();
             return;
