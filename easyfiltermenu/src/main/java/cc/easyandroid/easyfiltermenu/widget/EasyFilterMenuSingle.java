@@ -466,11 +466,11 @@ public class EasyFilterMenuSingle extends EasyFilterMenu {
     }
 
 
-    @Override
-    public EasyItemManager getMenuData() {
-        EasyFilterAdapter easyFilterAdapter = (EasyFilterAdapter) mRecyclerView1.getAdapter();
-        return easyFilterAdapter.getEasyItemManager();
-    }
+//    @Override
+//    public EasyItemManager getMenuData() {
+//        EasyFilterAdapter easyFilterAdapter = (EasyFilterAdapter) mRecyclerView1.getAdapter();
+//        return easyFilterAdapter.getEasyItemManager();
+//    }
 
     protected EasyMenuStates onCreateMenuStates(EasyItemManager easyItemManager) {
         return new EasyMenuStates.Builder()//

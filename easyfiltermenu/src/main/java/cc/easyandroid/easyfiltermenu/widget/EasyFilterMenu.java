@@ -4,6 +4,8 @@ import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
+import android.os.Bundle;
+import android.os.Parcelable;
 import android.support.v4.util.ArrayMap;
 import android.util.AttributeSet;
 import android.view.View;
@@ -25,6 +27,7 @@ import cc.easyandroid.easyfiltermenu.core.EasyFilterListener;
 import cc.easyandroid.easyfiltermenu.core.EasyItemManager;
 import cc.easyandroid.easyfiltermenu.core.EasyMenuStates;
 import cc.easyandroid.easyfiltermenu.core.IEasyItem;
+import cc.easyandroid.easyfiltermenu.core.StateUtils;
 
 import static android.os.Process.THREAD_PRIORITY_BACKGROUND;
 
@@ -151,16 +154,21 @@ public abstract class EasyFilterMenu extends LinearLayout implements Runnable {
 
     }
 
+    private  EasyItemManager easyItemManager;
 
     public void setMenuData(boolean show, EasyItemManager easyItemManager) {
         onMenuDataPrepared(easyItemManager);
+        this.easyItemManager=easyItemManager;
         if (show && easyItemManager != null && easyItemManager.isHasEasyItems()) {
             toggle();
         }
-
     }
 
-    public abstract EasyItemManager getMenuData();
+
+    public  EasyItemManager getMenuData(){
+        return  easyItemManager;
+    };
+
 
     protected void onMenuDataPrepared(EasyItemManager easyItemManager) {
 
@@ -193,10 +201,12 @@ public abstract class EasyFilterMenu extends LinearLayout implements Runnable {
      * @param menuTitleViewResourceId menuTitleViewResourceId
      */
     void setMenuTitleViewResourceId(int menuTitleViewResourceId) {
-        View menuTitleView = View.inflate(getContext(), menuTitleViewResourceId, this);
+           View menuTitleView = View.inflate(getContext(), menuTitleViewResourceId, this);
         mTitleTextView = (TextView) menuTitleView.findViewById(R.id.easyListFilter_MenuTitleDisplayName);
         mTitleTextView.setEnabled(false);
         mTitleTextView.setText(defultMenuText);
+        mTitleTextView.setSaveEnabled(false);
+        mTitleTextView.setFreezesText(false);
         menuTitleView.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -205,10 +215,28 @@ public abstract class EasyFilterMenu extends LinearLayout implements Runnable {
             }
         });
         onMenuTitleViewCreated(menuTitleView, this);
+
     }
 
     protected void onMenuTitleViewCreated(View menuTitleView, EasyFilterMenu easyFilterMenu) {
 
+    }
+
+    @Override
+    protected Parcelable onSaveInstanceState() {
+        Bundle bundle = new Bundle();
+        Parcelable superData = super.onSaveInstanceState();
+        bundle.putParcelable("super_data", superData);
+        StateUtils.saveTitleState(bundle,mTitleTextView,easyItemManager);
+        return bundle;
+    }
+
+    @Override
+    protected void onRestoreInstanceState(Parcelable state) {
+        Bundle bundle = (Bundle) state;
+        Parcelable superData = bundle.getParcelable("super_data");
+        StateUtils.restoreTitletate(bundle,mTitleTextView,this);
+        super.onRestoreInstanceState(superData);
     }
 
     /**
@@ -474,4 +502,5 @@ public abstract class EasyFilterMenu extends LinearLayout implements Runnable {
     public boolean hasSelectedValues() {
         return true;
     }
+
 }

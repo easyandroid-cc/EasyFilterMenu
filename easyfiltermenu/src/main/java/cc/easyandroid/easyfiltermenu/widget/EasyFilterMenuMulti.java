@@ -149,11 +149,11 @@ public class EasyFilterMenuMulti extends EasyFilterMenu {
         easyFilterAdapter.setEasyItemManager(easyItemManager);
     }
 
-    @Override
-    public EasyItemManager getMenuData() {
-        EasyFilterAdapter easyFilterAdapter = (EasyFilterAdapter) mRecyclerView1.getAdapter();
-        return easyFilterAdapter.getEasyItemManager();
-    }
+//    @Override
+//    public EasyItemManager getMenuData() {
+//        EasyFilterAdapter easyFilterAdapter = (EasyFilterAdapter) mRecyclerView1.getAdapter();
+//        return easyFilterAdapter.getEasyItemManager();
+//    }
 
 
     //Save state

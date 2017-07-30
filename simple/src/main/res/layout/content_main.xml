@@ -5,6 +5,7 @@
     android:id="@+id/easyMenuContainer"
     android:layout_width="match_parent"
     android:layout_height="48dp"
+    android:saveEnabled="true"
     android:background="#000000"
     android:orientation="horizontal"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
@@ -13,6 +14,7 @@
     <cc.easyandroid.easyfiltermenu.widget.EasyFilterMenuSingle
         android:id="@+id/menuFilter1"
         android:layout_width="0dp"
+        android:saveEnabled="true"
         android:layout_height="match_parent"
         android:layout_weight="1"
         android:background="@color/q_ffffff"

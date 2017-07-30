@@ -6,6 +6,8 @@
     android:gravity="center"
     android:paddingTop="1dp"
     android:paddingRight="5dp"
+    android:saveEnabled="true"
+    android:freezesText="true"
     android:paddingLeft="5dp"
     android:singleLine="true"
     android:text="加载.."
