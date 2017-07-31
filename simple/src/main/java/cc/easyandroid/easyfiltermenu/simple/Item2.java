@@ -1,6 +1,8 @@
 package cc.easyandroid.easyfiltermenu.simple;
 
 import android.content.Context;
+import android.os.Parcel;
+import android.os.Parcelable;
 import android.util.SparseBooleanArray;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -20,7 +22,7 @@ import cc.easyandroid.easyrecyclerview.EasyFlexibleAdapter;
 import cc.easyandroid.easyrecyclerview.holders.FlexibleViewHolder;
 import cc.easyandroid.listfiltermenu.simple.R;
 
-public class Item2 extends Text2.ResultEntity implements IEasyItem<Item2.ListViewHolder> {
+public class Item2 extends Text2.ResultEntity implements IEasyItem<Item2.ListViewHolder>,Parcelable {
     EasyItemManager easyItemManager;//一定要是单列的
     HashMap<String, String> para = new HashMap<>();
 
@@ -175,4 +177,33 @@ public class Item2 extends Text2.ResultEntity implements IEasyItem<Item2.ListVie
             }
         }
     }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeParcelable(this.easyItemManager, 0);
+        dest.writeSerializable(this.para);
+    }
+
+    public Item2() {
+    }
+
+    protected Item2(Parcel in) {
+        this.easyItemManager = in.readParcelable(EasyItemManager.class.getClassLoader());
+        this.para = (HashMap<String, String>) in.readSerializable();
+    }
+
+    public static final Parcelable.Creator<Item2> CREATOR = new Parcelable.Creator<Item2>() {
+        public Item2 createFromParcel(Parcel source) {
+            return new Item2(source);
+        }
+
+        public Item2[] newArray(int size) {
+            return new Item2[size];
+        }
+    };
 }

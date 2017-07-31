@@ -27,7 +27,6 @@ import cc.easyandroid.easyfiltermenu.core.EasyFilterListener;
 import cc.easyandroid.easyfiltermenu.core.EasyItemManager;
 import cc.easyandroid.easyfiltermenu.core.EasyMenuStates;
 import cc.easyandroid.easyfiltermenu.core.IEasyItem;
-import cc.easyandroid.easyfiltermenu.core.StateUtils;
 
 import static android.os.Process.THREAD_PRIORITY_BACKGROUND;
 
@@ -154,20 +153,22 @@ public abstract class EasyFilterMenu extends LinearLayout implements Runnable {
 
     }
 
-    private  EasyItemManager easyItemManager;
+    private EasyItemManager easyItemManager;
 
     public void setMenuData(boolean show, EasyItemManager easyItemManager) {
         onMenuDataPrepared(easyItemManager);
-        this.easyItemManager=easyItemManager;
+        this.easyItemManager = easyItemManager;
         if (show && easyItemManager != null && easyItemManager.isHasEasyItems()) {
             toggle();
         }
     }
 
 
-    public  EasyItemManager getMenuData(){
-        return  easyItemManager;
-    };
+    public EasyItemManager getMenuData() {
+        return easyItemManager;
+    }
+
+    ;
 
 
     protected void onMenuDataPrepared(EasyItemManager easyItemManager) {
@@ -201,7 +202,7 @@ public abstract class EasyFilterMenu extends LinearLayout implements Runnable {
      * @param menuTitleViewResourceId menuTitleViewResourceId
      */
     void setMenuTitleViewResourceId(int menuTitleViewResourceId) {
-           View menuTitleView = View.inflate(getContext(), menuTitleViewResourceId, this);
+        View menuTitleView = View.inflate(getContext(), menuTitleViewResourceId, this);
         mTitleTextView = (TextView) menuTitleView.findViewById(R.id.easyListFilter_MenuTitleDisplayName);
         mTitleTextView.setEnabled(false);
         mTitleTextView.setText(defultMenuText);
@@ -227,7 +228,7 @@ public abstract class EasyFilterMenu extends LinearLayout implements Runnable {
         Bundle bundle = new Bundle();
         Parcelable superData = super.onSaveInstanceState();
         bundle.putParcelable("super_data", superData);
-        StateUtils.saveTitleState(bundle,mTitleTextView,easyItemManager);
+        bundle.putParcelable(EASYFILTERMENU_STATE_KEY, getMenuStates());
         return bundle;
     }
 
@@ -235,9 +236,15 @@ public abstract class EasyFilterMenu extends LinearLayout implements Runnable {
     protected void onRestoreInstanceState(Parcelable state) {
         Bundle bundle = (Bundle) state;
         Parcelable superData = bundle.getParcelable("super_data");
-        StateUtils.restoreTitletate(bundle,mTitleTextView,this);
+        EasyMenuStates easyMenuStates = bundle.getParcelable(EASYFILTERMENU_STATE_KEY);
+        if (easyMenuStates != null) {
+            setMenuStates(easyMenuStates);
+        }
         super.onRestoreInstanceState(superData);
     }
+
+    public static final String EASYFILTERMENU_STATE_KEY = "EasyFilterMenuStateKey";
+
 
     /**
      * 设置pop
@@ -419,7 +426,7 @@ public abstract class EasyFilterMenu extends LinearLayout implements Runnable {
 
     public void setMenuStates(EasyMenuStates easyMenuStates) {
         setMenuData(false, easyMenuStates.getEasyItemManager());
-        putEasyMenuParas(easyMenuStates.getEasyMenuParas());//
+        setMenuParas(easyMenuStates.getEasyMenuParas());//
         setMenuTitle(easyMenuStates.getMenuTitle());
     }
 
@@ -468,7 +475,10 @@ public abstract class EasyFilterMenu extends LinearLayout implements Runnable {
     }
 
     private void addParaFromIEasyItem(IEasyItem iEasyItem) {
-        putEasyMenuParas(iEasyItem.getEasyParameter());
+        this.easyMenuParas.putAll(iEasyItem.getEasyParameter());
+        if (onEasyMenuParasChangedListener != null) {//
+            onEasyMenuParasChangedListener.onChanged(this.easyMenuParas);
+        }
     }
 
     private EasyFilterListener.OnEasyMenuParasChangedListener onEasyMenuParasChangedListener;
@@ -477,11 +487,13 @@ public abstract class EasyFilterMenu extends LinearLayout implements Runnable {
         this.onEasyMenuParasChangedListener = onEasyMenuParasChangedListener;
     }
 
-    public void putEasyMenuParas(Map<String, String> easyMenuParas) {
+    /**
+     * 恢复参数，恢复数据不会调用changed
+     *
+     * @param easyMenuParas
+     */
+    public void setMenuParas(Map<String, String> easyMenuParas) {
         this.easyMenuParas.putAll(easyMenuParas);
-        if (onEasyMenuParasChangedListener != null) {
-            onEasyMenuParasChangedListener.onChanged(this.easyMenuParas);
-        }
     }
 
     public ArrayMap<String, String> getEasyMenuParas() {

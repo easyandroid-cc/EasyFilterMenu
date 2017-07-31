@@ -1,7 +1,6 @@
 package cc.easyandroid.easyfiltermenu.simple;
 
 import android.os.Parcel;
-import android.os.Parcelable;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -165,14 +164,5 @@ public class Text2 implements Serializable {
             in.readList(this.subregions, List.class.getClassLoader());
         }
 
-        public static final Parcelable.Creator<ResultEntity> CREATOR = new Parcelable.Creator<ResultEntity>() {
-            public ResultEntity createFromParcel(Parcel source) {
-                return new ResultEntity(source);
-            }
-
-            public ResultEntity[] newArray(int size) {
-                return new ResultEntity[size];
-            }
-        };
     }
 }

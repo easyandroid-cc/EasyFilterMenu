@@ -8,7 +8,7 @@ import android.util.SparseBooleanArray;
 /**
  * menu 数据封装对象
  */
-public class EasyMenuStates implements Parcelable {
+public class EasyMenuStates1 implements Parcelable {
     private EasyItemManager easyItemManager;//item的数据
     private String menuTitle;
     private SparseBooleanArray menuStatesArray;//保存被选中的状态的EasyFilterMenuMulti专用
@@ -35,7 +35,7 @@ public class EasyMenuStates implements Parcelable {
         return menuTitle;
     }
 
-    private EasyMenuStates(Builder builder) {
+    private EasyMenuStates1(Builder builder) {
         easyItemManager = builder.easyItemManager;
         menuTitle = builder.menuTitle;
         menuStatesArray = builder.menuStatesArray;
@@ -78,8 +78,8 @@ public class EasyMenuStates implements Parcelable {
             return this;
         }
 
-        public EasyMenuStates build() {
-            return new EasyMenuStates(this);
+        public EasyMenuStates1 build() {
+            return new EasyMenuStates1(this);
         }
     }
 
@@ -88,9 +88,10 @@ public class EasyMenuStates implements Parcelable {
     public int describeContents() {
         return 0;
     }
+
     @Override
     public void writeToParcel(Parcel dest, int flags) {
-        dest.writeParcelable(this.easyItemManager, 0);
+//        dest.writeSerializable(this.easyItemManager);
         dest.writeString(this.menuTitle);
         dest.writeSparseBooleanArray(this.menuStatesArray);
         dest.writeMap(this.multiTitles);
@@ -98,8 +99,8 @@ public class EasyMenuStates implements Parcelable {
 
     }
 
-    protected EasyMenuStates(Parcel in) {
-        this.easyItemManager = in.readParcelable(EasyItemManager.class.getClassLoader());
+    protected EasyMenuStates1(Parcel in) {
+        this.easyItemManager = (EasyItemManager) in.readSerializable();
         this.menuTitle = in.readString();
         this.menuStatesArray = in.readSparseBooleanArray();
         this.multiTitles = new ArrayMap<Integer, String>();
@@ -107,13 +108,14 @@ public class EasyMenuStates implements Parcelable {
         this.easyMenuParas = new ArrayMap<String, String>();
         in.readMap(this.easyMenuParas, easyMenuParas.getClass().getClassLoader());
     }
-    public static final Creator<EasyMenuStates> CREATOR = new Creator<EasyMenuStates>() {
-        public EasyMenuStates createFromParcel(Parcel source) {
-            return new EasyMenuStates(source);
+
+    public static final Creator<EasyMenuStates1> CREATOR = new Creator<EasyMenuStates1>() {
+        public EasyMenuStates1 createFromParcel(Parcel source) {
+            return new EasyMenuStates1(source);
         }
 
-        public EasyMenuStates[] newArray(int size) {
-            return new EasyMenuStates[size];
+        public EasyMenuStates1[] newArray(int size) {
+            return new EasyMenuStates1[size];
         }
     };
 }

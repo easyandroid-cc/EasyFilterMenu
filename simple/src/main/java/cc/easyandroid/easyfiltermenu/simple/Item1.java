@@ -1,5 +1,7 @@
 package cc.easyandroid.easyfiltermenu.simple;
 
+import android.os.Parcel;
+import android.os.Parcelable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,7 +20,7 @@ import cc.easyandroid.listfiltermenu.simple.R;
 /**
  * Created by cgpllx on 2016/10/17.
  */
-public class Item1 extends Text1.ResultEntity implements IEasyItem<Item1.ListViewHolder> {
+public class Item1 extends Text1.ResultEntity implements IEasyItem<Item1.ListViewHolder>, Parcelable {
     EasyItemManager easyItemManager;//一定要是单列的
     HashMap<String, String> para = new HashMap<>();
 
@@ -72,7 +74,6 @@ public class Item1 extends Text1.ResultEntity implements IEasyItem<Item1.ListVie
     }
 
 
-
     @Override
     public ListViewHolder createViewHolder(EasyFlexibleAdapter easyFlexibleListViewAdapter, LayoutInflater inflater, ViewGroup viewGroup) {
         return new ListViewHolder(inflater.inflate(getLayoutRes(), viewGroup, false), easyFlexibleListViewAdapter);
@@ -83,7 +84,7 @@ public class Item1 extends Text1.ResultEntity implements IEasyItem<Item1.ListVie
         viewHolder.setData(this);
     }
 
-    public class ListViewHolder extends FlexibleViewHolder{
+    public class ListViewHolder extends FlexibleViewHolder {
         TextView textView;
 
         public ListViewHolder(final View header_ad, EasyFlexibleAdapter adapter) {
@@ -100,11 +101,71 @@ public class Item1 extends Text1.ResultEntity implements IEasyItem<Item1.ListVie
 
         public void setData(Item1 entity) {
             textView.setText(entity.getEasyItemTag());
-            if(entity.getEasyItemManager().isChildSelected()){
+            if (entity.getEasyItemManager().isChildSelected()) {
                 textView.setTextColor(getContentView().getResources().getColor(R.color.q_ff0000));
-            }else{
+            } else {
                 textView.setTextColor(getContentView().getResources().getColor(R.color.colorPrimary));
             }
         }
+
     }
+
+    public Item1() {
+    }
+
+    //
+//        @Override
+//        public void writeToParcel(Parcel dest, int flags) {
+//            dest.writeString(this.fullPinyin);
+//            dest.writeString(this.id);
+//            dest.writeDouble(this.latitude);
+//            dest.writeDouble(this.longitude);
+//            dest.writeString(this.name);
+//            dest.writeTypedList(subregions);
+//        }
+//
+//        protected Item1(Parcel in) {
+//            this.fullPinyin = in.readString();
+//            this.id = in.readString();
+//            this.latitude = in.readDouble();
+//            this.longitude = in.readDouble();
+//            this.name = in.readString();
+//            this.subregions = in.createTypedArrayList(Item1.CREATOR);
+//        }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeParcelable(this.easyItemManager, 0);
+        dest.writeString(this.fullPinyin);
+        dest.writeString(this.id);
+        dest.writeDouble(this.latitude);
+        dest.writeDouble(this.longitude);
+        dest.writeString(this.name);
+        dest.writeTypedList(subregions);
+    }
+
+    protected Item1(Parcel in) {
+        this.easyItemManager = in.readParcelable(EasyItemManager.class.getClassLoader());
+        this.fullPinyin = in.readString();
+        this.id = in.readString();
+        this.latitude = in.readDouble();
+        this.longitude = in.readDouble();
+        this.name = in.readString();
+        this.subregions = in.createTypedArrayList(Item1.CREATOR);
+    }
+
+    public static final Creator<Item1> CREATOR = new Creator<Item1>() {
+        public Item1 createFromParcel(Parcel source) {
+            return new Item1(source);
+        }
+
+        public Item1[] newArray(int size) {
+            return new Item1[size];
+        }
+    };
 }
