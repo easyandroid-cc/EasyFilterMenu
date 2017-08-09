@@ -20,8 +20,8 @@
         android:background="@color/q_ffffff"
         android:clickable="true"
         app:menuContentLayout="@layout/menu_content_single_layout"
-        app:menuTitle="区域" />
-
+        app:menuTitle="民治" />
+    <!--区域-->
     <cc.easyandroid.easyfiltermenu.widget.EasyFilterMenuSingle
         android:id="@+id/menuFilter2"
         android:layout_width="0dp"

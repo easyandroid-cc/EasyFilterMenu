@@ -347,7 +347,7 @@ public class EasyFilterMenuSingle extends EasyFilterMenu {
         if (iEasyItem != null) {
             CharSequence displayName = iEasyItem.getEasyItemTag();
             if (!TextUtils.isEmpty(displayName)) {
-                setMenuTitle(displayName);
+                setMenuTitle(displayName,true);
             } else {
                 setMenuTitle(defultMenuText);
             }
