@@ -21,6 +21,7 @@ import cc.easyandroid.easyfiltermenu.core.EasyItemManager;
 import cc.easyandroid.easyfiltermenu.core.EasyMenuStates;
 import cc.easyandroid.easyfiltermenu.core.IEasyItem;
 import cc.easyandroid.easyfiltermenu.core.SimpleEasyItem;
+import cc.easyandroid.easyfiltermenu.simple.no.NoLimitItem1;
 import cc.easyandroid.easyfiltermenu.widget.EasyFileterMenuCustom;
 import cc.easyandroid.easyfiltermenu.widget.EasyFilterMenu;
 import cc.easyandroid.easyfiltermenu.widget.EasyFilterMenuMulti;
@@ -58,13 +59,13 @@ public class MainActivity extends AppCompatActivity {
         for (int i = 0; i < lists1.size(); i++) {
             Item1 item1 = (Item1) lists1.get(i);
             ArrayList lists5 = item1.getEasyItemManager().getEasyItems();
-//            lists5.add(0, new NoLimitItem1(item1.getEasyItemTag()));
+            lists5.add(0, new NoLimitItem1(item1.getEasyItemTag()));
         }
-//        lists1.add(0, new NoLimitItem1(null));
+        lists1.add(0, new NoLimitItem1(null));
         EasyItemManager easyItemManager1 = new EasyItemManager(lists1);
 //        easyItemManager1.setChildSelectPosition(2);
-        menuFilter1.setMenuData(false, easyItemManager1);
-//        lists2.add(0, new NoLimitItem1());
+//        menuFilter1.setMenuData(false, easyItemManager1);
+        lists2.add(0, new NoLimitItem1());
 //        menuFilter2.setMenuData(false, new EasyItemManager(lists2));
 //        lists3.add(0, new NoLimitItem1(IEasyItem.MENUMULTI_NOLIMITITEM_TAG));
         menuFilter3.setMenuData(false, new EasyItemManager(lists3));

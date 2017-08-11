@@ -1,6 +1,10 @@
 package cc.easyandroid.easyfiltermenu.core;
 
 
+import android.os.Bundle;
+import android.os.Parcel;
+import android.os.Parcelable;
+import android.support.annotation.NonNull;
 import android.support.v4.util.ArrayMap;
 import android.support.v4.util.SimpleArrayMap;
 import android.util.SparseArray;
@@ -116,5 +120,57 @@ public class EasyMenuManager implements EasyFilterListener.OnMenuShowListener, E
                 }
             }
         }
+    }
+
+    public void saveInstanceState(@NonNull Bundle out) {
+        State state = new State();
+        state.para = easyMenuAllParas;
+        out.putParcelable(STATEKEY, state);
+    }
+
+    static final String STATEKEY = "state";
+
+
+    public void restoreInstanceState(Bundle in) {
+        State state = in.getParcelable(STATEKEY);
+        if (state != null) {
+            easyMenuAllParas = state.para;
+        }
+
+    }
+
+    /**
+     * Presenter的状态
+     */
+    public static class State implements Parcelable {
+        private ArrayMap<String, String> para;//筛选参数集合
+
+        @Override
+        public int describeContents() {
+            return 0;
+        }
+
+        public State() {
+        }
+
+        @Override
+        public void writeToParcel(Parcel dest, int flags) {
+            dest.writeMap(this.para);
+        }
+
+        protected State(Parcel in) {
+            this.para = new ArrayMap<String, String>();
+            in.readMap(this.para, para.getClass().getClassLoader());
+        }
+
+        public static final Creator<State> CREATOR = new Creator<State>() {
+            public State createFromParcel(Parcel source) {
+                return new State(source);
+            }
+
+            public State[] newArray(int size) {
+                return new State[size];
+            }
+        };
     }
 }

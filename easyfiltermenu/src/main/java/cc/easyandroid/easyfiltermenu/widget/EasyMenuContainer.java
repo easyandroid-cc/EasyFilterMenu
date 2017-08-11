@@ -1,6 +1,8 @@
 package cc.easyandroid.easyfiltermenu.widget;
 
 import android.content.Context;
+import android.os.Bundle;
+import android.os.Parcelable;
 import android.support.v4.util.ArrayMap;
 import android.util.AttributeSet;
 import android.util.SparseArray;
@@ -36,6 +38,26 @@ public class EasyMenuContainer extends LinearLayout {
 
     private void init() {
         easyMenuManager = new EasyMenuManager();
+    }
+
+    @Override
+    protected Parcelable onSaveInstanceState() {
+        Bundle bundle = new Bundle();
+        bundle.putParcelable("super_data", super.onSaveInstanceState());
+        if (easyMenuManager != null) {
+            easyMenuManager.getAllMenuParas();
+            easyMenuManager.saveInstanceState(bundle);
+        }
+        return bundle;
+    }
+
+    @Override
+    protected void onRestoreInstanceState(Parcelable state) {
+        Bundle bundle = (Bundle) state;
+        super.onRestoreInstanceState(bundle.getParcelable("super_data"));
+        if (easyMenuManager != null && state != null) {
+            easyMenuManager.restoreInstanceState(bundle);
+        }
     }
 
     @Override

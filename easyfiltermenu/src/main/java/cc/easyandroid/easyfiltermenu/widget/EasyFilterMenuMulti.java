@@ -96,7 +96,7 @@ public class EasyFilterMenuMulti extends EasyFilterMenu {
     }
 
     @Override
-    protected boolean isEmpty() {
+    public boolean isEmpty() {
         EasyFilterAdapter easyFilterAdapter = (EasyFilterAdapter) mRecyclerView1.getAdapter();
         return easyFilterAdapter.isEmpty();
     }

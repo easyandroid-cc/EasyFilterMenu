@@ -140,7 +140,7 @@ public class EasyFilterMenuSingle extends EasyFilterMenu {
     }
 
     @Override
-    protected boolean isEmpty() {
+    public boolean isEmpty() {
         EasyFilterAdapter adapter = (EasyFilterAdapter) mRecyclerView1.getAdapter();
         return adapter.isEmpty();
     }

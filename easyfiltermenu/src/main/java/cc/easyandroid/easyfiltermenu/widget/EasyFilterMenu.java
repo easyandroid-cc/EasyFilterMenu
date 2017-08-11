@@ -7,6 +7,7 @@ import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.os.Parcelable;
 import android.support.v4.util.ArrayMap;
+import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.view.View;
 import android.view.ViewGroup;
@@ -182,8 +183,8 @@ public abstract class EasyFilterMenu extends LinearLayout implements Runnable {
     public void setMenuTitle(CharSequence menuTitle, boolean forceHighlight) {
         mTitleTextView.setText(menuTitle);
         if (!defultMenuText.equals(menuTitle) || forceHighlight) {
-            mTitleTextView.setEnabled(true);//通过改变mScreeningText的Enabled属性去改变他的颜色
-        } else {
+            mTitleTextView.setEnabled(true);
+        } else {//title 内容 相同
             mTitleTextView.setEnabled(false);
         }
     }
@@ -278,7 +279,7 @@ public abstract class EasyFilterMenu extends LinearLayout implements Runnable {
      *
      * @return isEmpty
      */
-    protected abstract boolean isEmpty();
+    public abstract boolean isEmpty();
 
     /**
      * 控制现实nemu的现实和关闭
@@ -427,7 +428,17 @@ public abstract class EasyFilterMenu extends LinearLayout implements Runnable {
     public void setMenuStates(EasyMenuStates easyMenuStates) {
         setMenuData(false, easyMenuStates.getEasyItemManager());
         setMenuParas(easyMenuStates.getEasyMenuParas());//
-        setMenuTitle(easyMenuStates.getMenuTitle());
+
+        boolean forceHighlight = false;
+        if (easyMenuParas != null && !easyMenuParas.isEmpty()) {
+            for (String value : easyMenuParas.values()) {
+                if (!TextUtils.isEmpty(value)) {
+                    forceHighlight = true;//只要有一个参数不是null，就高亮显示
+                    break;
+                }
+            }
+        }
+        setMenuTitle(easyMenuStates.getMenuTitle(), forceHighlight);
     }
 
     public void cleanMenuStates() {
