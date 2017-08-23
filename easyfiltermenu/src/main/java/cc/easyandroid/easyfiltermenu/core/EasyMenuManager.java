@@ -71,6 +71,10 @@ public class EasyMenuManager implements EasyFilterListener.OnMenuShowListener, E
                 EasyMenuStates sparseArray = menusStates.get(menuSerialNumber);
                 if (sparseArray != null) {
                     easyFilterMenu.setMenuStates(sparseArray);
+                    SimpleArrayMap<String, String> easyMenuParas = sparseArray.getEasyMenuParas();
+                    if (easyMenuParas != null && !easyMenuParas.isEmpty()) {
+                        easyMenuAllParas.putAll(easyMenuParas);
+                    }
                 }
             }
         }
